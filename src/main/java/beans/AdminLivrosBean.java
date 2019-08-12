@@ -7,7 +7,7 @@ import javax.inject.Named;
 @Named
 public class AdminLivrosBean {
 
-    private Livro livro;
+    private Livro livro = new Livro();
 
     public void salvar() {
         System.out.println("Livro Cadastrado: " + livro);
