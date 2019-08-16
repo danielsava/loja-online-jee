@@ -5,6 +5,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
+<h:head>
+
+</h:head>
+
+<h:body>
+
     <h:form>
         <div>
             <h:outputLabel value="Título"/>
@@ -22,10 +28,18 @@
             <h:outputLabel value="Preço"/>
             <h:inputText value="#{adminLivrosBean.livro.preco}" />
         </div>
+        <div>
+            <h:outputLabel value="Autores"/>
+            <h:selectManyListbox value="#{adminLivrosBean.livro.autores}">
+                <f:selectItems value="#{adminLivrosBean.autores}" var="autor"
+                    itemValue="#{autor}" itemLabel="#{autor.nome}"/>
+            </h:selectManyListbox>
+        </div>
 
-        <h:commandButton value="Cadastrar" />
+        <h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
 
     </h:form>
 
+</h:body>
 
 </html>

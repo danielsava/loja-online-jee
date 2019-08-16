@@ -1,26 +1,42 @@
 package models;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class Livro {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String titulo;
 
+    @Lob
     private String descricao;
 
     private BigDecimal preco;
 
     private Integer paginas;
 
+    @ManyToMany
+    private List<Autor> autores;
+
+    public Livro() {
+        autores = new ArrayList<>();
+    }
 
     @Override
     public String toString() {
         return "Livro{" +
-                "titulo='" + titulo + '\'' +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", preco=" + preco +
                 ", paginas=" + paginas +
+                ", autores=" + autores +
                 '}';
     }
 
@@ -54,6 +70,14 @@ public class Livro {
 
     public void setPaginas(Integer paginas) {
         this.paginas = paginas;
+    }
+
+    public List<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(List<Autor> autores) {
+        this.autores = autores;
     }
 
 }
