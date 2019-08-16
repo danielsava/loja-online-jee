@@ -20,7 +20,7 @@ public class LivroDao {
     }
 
     public List<Livro> listar() {
-        return manager.createQuery("select a from Livro a", Livro.class).getResultList();
+        return manager.createQuery("select distinct (l) from Livro l join fetch l.autores", Livro.class).getResultList();
     }
 
 }
