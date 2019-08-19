@@ -12,28 +12,35 @@
 <h:body>
 
     <h:form>
+
         <div>
             <h:outputLabel value="Título"/>
-            <h:inputText value="#{adminLivrosBean.livro.titulo}" />
+            <h:inputText id="titulo" value="#{adminLivrosBean.livro.titulo}"/>
+            <h:message for="titulo"/>
         </div>
         <div>
             <h:outputLabel value="Descrição"/>
-            <h:inputTextarea rows="4" cols="20" value="#{adminLivrosBean.livro.descricao}" />
+            <h:inputTextarea id="descricao" rows="4" cols="20" value="#{adminLivrosBean.livro.descricao}"/>
+            <h:message for="descricao"/>
         </div>
         <div>
             <h:outputLabel value="Páginas"/>
-            <h:inputText value="#{adminLivrosBean.livro.paginas}" />
+            <h:inputText value="#{adminLivrosBean.livro.paginas}">
+            </h:inputText>
         </div>
         <div>
             <h:outputLabel value="Preço"/>
-            <h:inputText value="#{adminLivrosBean.livro.preco}" />
+            <h:inputText id="preco" value="#{adminLivrosBean.livro.preco}">
+            </h:inputText>
+            <h:message for="preco"/>
         </div>
         <div>
             <h:outputLabel value="Autores"/>
-            <h:selectManyListbox value="#{adminLivrosBean.livro.autores}">
+            <h:selectManyListbox id="autores" value="#{adminLivrosBean.livro.autores}">
                 <f:selectItems value="#{adminLivrosBean.autores}" var="autor"
                     itemValue="#{autor}" itemLabel="#{autor.nome}"/>
             </h:selectManyListbox>
+            <h:message for="autores" />
         </div>
 
         <h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
