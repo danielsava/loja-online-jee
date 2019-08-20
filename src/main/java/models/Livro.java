@@ -3,10 +3,13 @@ package models;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Livro {
@@ -23,12 +26,15 @@ public class Livro {
     @Lob
     private String descricao;
 
-    @NotEmpty(message = "Informe o preço")
+    @NotNull(message = "Informe o preço")
     @Min(value = 20, message = "Preço abaixo do permitido")
     private BigDecimal preco;
 
     @Min(value = 2, message = "Número de Páginas abaixo do permitido")
     private Integer paginas;
+
+    @Temporal(TemporalType.DATE)
+    private Calendar dataPublicacao;
 
     @NotEmpty(message = "Informe um autor")
     @ManyToMany
@@ -48,6 +54,35 @@ public class Livro {
                 ", paginas=" + paginas +
                 ", autores=" + autores +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return Objects.equals(id, livro.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Calendar getDataPublicacao() {
+        return dataPublicacao;
+    }
+
+    public void setDataPublicacao(Calendar dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
     }
 
     public String getTitulo() {

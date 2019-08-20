@@ -11,6 +11,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,8 @@ public class AdminLivrosBean implements Serializable  {
     private Livro livro;
 
     private List<Autor> autores;
+
+    private Part capaLivro;
 
     @PostConstruct
     private void init() {
@@ -82,6 +85,14 @@ public class AdminLivrosBean implements Serializable  {
 
     public void setAutores(List<Autor> autores) {
         this.autores = autores;
+    }
+
+    public Part getCapaLivro() {
+        return capaLivro;
+    }
+
+    public void setCapaLivro(Part capaLivro) {
+        this.capaLivro = capaLivro;
     }
 
 }
