@@ -2,6 +2,7 @@ package beans;
 
 import dao.AutorDao;
 import dao.LivroDao;
+import infra.FileSaver;
 import models.Autor;
 import models.Livro;
 
@@ -29,6 +30,9 @@ public class AdminLivrosBean implements Serializable  {
     @Inject
     private FacesContext facesContext;
 
+    @Inject
+    private FileSaver fileSaver;
+
     private Livro livro;
 
     private List<Autor> autores;
@@ -50,6 +54,8 @@ public class AdminLivrosBean implements Serializable  {
     }
 
     public String salvar() {
+
+        //livro.setCapaPath(fileSaver.write(capaLivro, "livros"));
 
         livroDao.salvar(livro);
 

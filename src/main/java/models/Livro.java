@@ -36,6 +36,8 @@ public class Livro {
     @Temporal(TemporalType.DATE)
     private Calendar dataPublicacao;
 
+    private String capaPath;
+
     @NotEmpty(message = "Informe um autor")
     @ManyToMany
     private List<Autor> autores;
@@ -123,6 +125,14 @@ public class Livro {
 
     public void setAutores(List<Autor> autores) {
         this.autores = autores;
+    }
+
+    public String getCapaPath() {
+        return capaPath;
+    }
+
+    public void setCapaPath(String capaPath) {
+        this.capaPath = capaPath;
     }
 
 }
