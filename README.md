@@ -19,3 +19,12 @@ $ project-new --named loja-online-jee
 	cursor: pointer;
 	font-size: 0;
 }
+
+
+
+# Exemplo Imagem Ícone
+<td class="formularioDoCarrinho-item">
+    <a jsf:action="#{carrinhoComprasBean.remover(carrinhoItem)}">
+        <img class="formularioDoCarrinho-item-remover-imagem"  src="#{request.contextPath}/resources/imagens/trash.png" alt="X" title="Remover" />
+    </a>
+</td>

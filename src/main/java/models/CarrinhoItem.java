@@ -1,16 +1,27 @@
 package models;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class CarrinhoItem {
+@Entity
+public class CarrinhoItem implements Serializable {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
     private Livro livro;
 
     private Integer quantidade;
 
 
-    public CarrinhoItem(Livro livro) {
+    public CarrinhoItem() {
+    }
+
+    private CarrinhoItem(Livro livro) {
         this.livro = livro;
         this.quantidade = 1;
     }
