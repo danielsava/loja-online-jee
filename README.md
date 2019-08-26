@@ -5,5 +5,17 @@ e adicionar o /bin no path do Windows.
 
 # forge
 $ project-new --named loja-online-jee
-$ cdi-setup --cdiVersion 1.1
-$ faces-setup --facesVersion 2.2
+
+# Exemplos Path CSS
+.formularioDoCarrinho-atualizar {
+	background-image: url(../imagens/refresh.png);
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-color: transparent;
+	background-size: 75%;
+	width: 24px;
+	height: 24px;
+	border: none;
+	cursor: pointer;
+	font-size: 0;
+}

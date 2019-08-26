@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
 <h:head>
@@ -50,24 +51,28 @@
 
             <div class="form-group">
                 <h:outputLabel value="Título" for="titulo"/>
-                <h:inputText id="titulo" value="#{adminLivrosBean.livro.titulo}" placeholder="Título" styleClass="form-control"/>
+                <h:inputText id="titulo" pt:placeholder="Título"
+                             value="#{adminLivrosBean.livro.titulo}" styleClass="form-control"/>
                 <h:message for="titulo"/>
             </div>
 
             <div class="form-group">
                 <h:outputLabel value="Descrição" for="descricao"/>
-                <h:inputTextarea id="descricao" rows="4" cols="20" value="#{adminLivrosBean.livro.descricao}" styleClass="form-control"/>
+                <h:inputTextarea id="descricao" rows="4" cols="20" pt:placeholder="Descrição"
+                                 value="#{adminLivrosBean.livro.descricao}" styleClass="form-control"/>
                 <h:message for="descricao"/>
             </div>
 
             <div class="form-group">
                 <h:outputLabel value="Páginas" for="paginas"/>
-                <h:inputText id="paginas" value="#{adminLivrosBean.livro.paginas}" styleClass="form-control" />
+                <h:inputText id="paginas" pt:placeholder="Páginas"
+                             value="#{adminLivrosBean.livro.paginas}" styleClass="form-control" />
             </div>
 
             <div class="form-group">
                 <h:outputLabel value="Preço" for="preco"/>
-                <h:inputText id="preco" value="#{adminLivrosBean.livro.preco}" styleClass="form-control">
+                <h:inputText id="preco" pt:placeholder="Preço"
+                             value="#{adminLivrosBean.livro.preco}" styleClass="form-control">
                 </h:inputText>
                 <h:message for="preco"/>
             </div>
@@ -83,14 +88,9 @@
 
             <div class="form-group">
                 <h:outputLabel value="Data Publicação"/>
-                <h:inputText id="dataPublicacao" value="#{adminLivrosBean.livro.dataPublicacao}" styleClass="form-control"/>
+                <h:inputText id="dataPublicacao" pt:placeholder="dd/MM/yyyy"
+                             value="#{adminLivrosBean.livro.dataPublicacao}" styleClass="form-control"/>
                 <h:message for="dataPublicacao" />
-            </div>
-
-            <div class="form-group">
-                <h:outputLabel value="Capa do Livro"/>
-                <h:inputFile id="capaLivro" value="#{adminLivrosBean.capaLivro}" />
-                <h:message for="capaLivro" />
             </div>
 
             <h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}" styleClass="btn btn-primary"/>

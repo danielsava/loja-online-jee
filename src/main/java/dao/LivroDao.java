@@ -7,10 +7,11 @@ import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 
-public class LivroDao {
+public class LivroDao implements Serializable {
 
 
     private static Integer criado = 0;

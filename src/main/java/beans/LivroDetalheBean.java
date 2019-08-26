@@ -3,11 +3,14 @@ package beans;
 import dao.LivroDao;
 import models.Livro;
 
-import javax.enterprise.inject.Model;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.Serializable;
 
-@Model
-public class LivroDetalheBean {
+@Named
+@ViewScoped
+public class LivroDetalheBean implements Serializable {
 
     @Inject
     private LivroDao livroDao;
