@@ -1,11 +1,12 @@
 package models;
 
 import dao.CompraDao;
-import dao.UsuarioDao;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -37,7 +38,23 @@ public class CarrinhoCompras implements Serializable {
     }
 
     public String toJson() {
-        return "{}";
+
+        JsonArrayBuilder builder = Json.createArrayBuilder();
+
+        for (CarrinhoItem item : itens) {
+            builder.add(
+                Json.createObjectBuilder()
+                    .add("titulo", item.getLivro().getTitulo())
+                    .add("preco", item.getLivro().getPreco())
+                    .add("quantidade", item.getQuantidade())
+                    .add("total", getTotal(item))
+            );
+        }
+
+        String json = builder.build().toString();
+        System.out.println(json);
+        return json;
+
     }
 
 
