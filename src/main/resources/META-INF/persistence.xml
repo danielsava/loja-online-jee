@@ -7,9 +7,18 @@
     <persistence-unit name="casadocodigo-dev" transaction-type="JTA">
     
         <jta-data-source>java:jboss/datasources/casadocodigoDS</jta-data-source>
+
+        <!-- Cache Nivel 2 JPA: Essa opção ('ENABLE_SELECTIVE') exige que as entidades sejam anotadas com o @Cacheable. A opção 'ALL' dispensa o uso dessa anotação nas entidades.-->
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         
         <properties>
-            
+
+            <!-- Cache Nivel 2 JPA : Habilita o uso do cache de nivel 2 -->
+            <property name="hibernate.cache.use_query_cache" value="true" />
+            <property name="hibernate.cache.infinispan.entity.expiration.lifespan" value="900000" /> <!-- Em milissegundos : 15 min -->
+            <property name="hibernate.cache.infinispan.entity.expiration.max_idle" value="300000" /> <!-- Em milissegundos : 5 min -->
+
+
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true"/>

@@ -1,6 +1,7 @@
 package models;
 
 import dao.CompraDao;
+import service.PagamentoGateway;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -22,20 +23,26 @@ public class CarrinhoCompras implements Serializable {
     @Inject
     private CompraDao compraDao;
 
+    @Inject
+    private PagamentoGateway pagamentoGateway;
+
     private Set<CarrinhoItem> itens = new HashSet<>();
 
 
     @Transactional
-    public void finalizar(Usuario usuario) {
+    public void finalizar(Compra compra) {
 
-        Compra compra = new Compra();
-
-        compra.setUsuario(usuario);
         compra.setItens(toJson());
+        compra.setTotal(getTotal());
 
         compraDao.salvar(compra);
 
+        String responsePagamento = pagamentoGateway.pagar(compra);
+
+        System.out.println(responsePagamento);
+
     }
+
 
     public String toJson() {
 
